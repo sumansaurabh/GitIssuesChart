@@ -1,0 +1,1 @@
+This is a sample app to display number of open issues in for a given repository.

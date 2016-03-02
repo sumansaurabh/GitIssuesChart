@@ -2,7 +2,7 @@
   "name": "GitIssuesChart",
   "description": "Displays Issue status",
   "version": "0.0.1",
-  "homepage": "https://github.com/angular/angular-seed",
+  "homepage": "http://gitissueschart.herokuapp.com/",
   "authors": [
     "Suman Saurabh <ss.sumansaurabh92@gmail.com>"
   ],
