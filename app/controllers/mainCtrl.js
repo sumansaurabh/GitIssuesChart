@@ -1,17 +1,24 @@
 gitIssuesChart.controller('mainCtrl', function ($scope, $rootScope, gitRestangular, gitIssuesFactory, urlParser, notify, notifyConfig) {
 
-	$scope.overview = true;
-	$scope.issues = false;
+	$scope.overview = false;
+	$scope.issues = true;
 	$scope.issuesOne = false;
 	$scope.issuesOneToSeven = false;
 	$scope.issuesSeven = false;
 
 	$scope.disableContainer = false;
 
+	$scope.delay = 0;
+    $scope.minDuration = 0;
+    $scope.message = 'Fetching...';
+    $scope.backdrop = true;
+    $scope.promise = null;
+
 	$scope.getData =  function(){
 		console.log($scope.locationUrl)
+		$scope.disableContainer = true;
 		var url = urlParser.parse($scope.locationUrl)
-		gitIssuesFactory.get(url.owner, url.repo).then(function (res) {
+		$scope.promise = gitIssuesFactory.get(url.owner, url.repo).then(function (res) {
             
             $rootScope.gitIssuesData = []
             for(var i=0;i<res.length;i++){
@@ -29,7 +36,7 @@ gitIssuesChart.controller('mainCtrl', function ($scope, $rootScope, gitRestangul
 	            	})
 	            }
             }
-            $scope.disableContainer = true;
+            
             console.log($rootScope.gitIssuesData)
             
         },function (err) {

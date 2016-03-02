@@ -58,7 +58,7 @@
     </div>
   </nav>
   <div class="container-fluid">
-      <div class="row" ng-if="disableContainer">
+      <div class="row" ng-show="disableContainer" cg-busy="{promise:promise,templateUrl:templateUrl,message:message,backdrop:backdrop,delay:delay,minDuration:minDuration}">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             <li ng-click="setOverView()"><a href="">Overview</a></li>
@@ -89,7 +89,7 @@
 
         
       </div>
-      <div ng-if="!disableContainer" class="shareInfo">
+      <div ng-show="!disableContainer" class="shareInfo">
           Please enter URL in the location provided
         </div>
     </div>
