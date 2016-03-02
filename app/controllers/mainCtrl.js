@@ -32,6 +32,10 @@ gitIssuesChart.controller('mainCtrl', function ($scope, $rootScope, gitRestangul
 		console.log($scope.locationUrl)
 		$scope.disableContainer = true;
 		$scope.url = urlParser.parse($scope.locationUrl)
+		if(!$scope.url){
+			notify('Invalid URL')
+			return;
+		}
 		$scope.promise = gitIssuesFactory.get($scope.url.owner, $scope.url.repo, $scope.page).then(function (res) {
             
             $rootScope.gitIssuesData = []
