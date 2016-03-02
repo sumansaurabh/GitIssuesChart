@@ -17,8 +17,8 @@ gitIssuesChart.controller('mainCtrl', function ($scope, $rootScope, gitRestangul
 	$scope.getData =  function(){
 		console.log($scope.locationUrl)
 		$scope.disableContainer = true;
-		var url = urlParser.parse($scope.locationUrl)
-		$scope.promise = gitIssuesFactory.get(url.owner, url.repo).then(function (res) {
+		$scope.url = urlParser.parse($scope.locationUrl)
+		$scope.promise = gitIssuesFactory.get($scope.url.owner, $scope.url.repo).then(function (res) {
             
             $rootScope.gitIssuesData = []
             for(var i=0;i<res.length;i++){
