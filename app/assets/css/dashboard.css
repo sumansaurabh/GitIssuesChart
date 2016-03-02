@@ -103,3 +103,19 @@ body {
   display: inline-block;
   border-radius: 50%;
 }
+
+.shareInfo {
+  font-size: 18px;
+  color: #DCD9CD;
+  text-align: center;
+  width: 550px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #565853;
+  top: 35%;
+  position: absolute;
+  left: 50%;
+  margin-left: -285px;
+  transition: width 200ms, height 200ms ease;
+  z-index: 98;
+}

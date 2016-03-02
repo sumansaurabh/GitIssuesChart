@@ -6,6 +6,8 @@ gitIssuesChart.controller('mainCtrl', function ($scope, $rootScope, gitRestangul
 	$scope.issuesOneToSeven = false;
 	$scope.issuesSeven = false;
 
+	$scope.disableContainer = false;
+
 	$scope.getData =  function(){
 		console.log($scope.locationUrl)
 		var url = urlParser.parse($scope.locationUrl)
@@ -27,6 +29,7 @@ gitIssuesChart.controller('mainCtrl', function ($scope, $rootScope, gitRestangul
 	            	})
 	            }
             }
+            $scope.disableContainer = true;
             console.log($rootScope.gitIssuesData)
             
         },function (err) {
