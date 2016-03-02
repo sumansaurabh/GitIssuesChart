@@ -1,5 +1,11 @@
 gitIssuesChart.controller('mainCtrl', function ($scope, $rootScope, gitRestangular, gitIssuesFactory, urlParser, notify, notifyConfig) {
 
+	$scope.overview = true;
+	$scope.issues = false;
+	$scope.issuesOne = false;
+	$scope.issuesOneToSeven = false;
+	$scope.issuesSeven = false;
+
 	$scope.getData =  function(){
 		console.log($scope.locationUrl)
 		var url = urlParser.parse($scope.locationUrl)
@@ -8,5 +14,45 @@ gitIssuesChart.controller('mainCtrl', function ($scope, $rootScope, gitRestangul
         },function (err) {
             notify('Unable to Fetch Data from Git Issues')
         });
+	}
+
+	$scope.setOverView = function(){
+		$scope.overview = true;
+		$scope.issues = false;
+		$scope.issuesOne = false;
+		$scope.issuesOneToSeven = false;
+		$scope.issuesSeven = false;
+	}
+
+	$scope.setIssues = function(){
+		$scope.overview = false;
+		$scope.issues = true;
+		$scope.issuesOne = false;
+		$scope.issuesOneToSeven = false;
+		$scope.issuesSeven = false;
+	}
+
+	$scope.setIssuesOne = function(){
+		$scope.overview = false;
+		$scope.issues = false;
+		$scope.issuesOne = true;
+		$scope.issuesOneToSeven = false;
+		$scope.issuesSeven = false;
+	}
+
+	$scope.setIssuesOneToSeven = function(){
+		$scope.overview = false;
+		$scope.issues = false;
+		$scope.issuesOne = false;
+		$scope.issuesOneToSeven = true;
+		$scope.issuesSeven = false;
+	}
+
+	$scope.setIssuesSeven = function(){
+		$scope.overview = false;
+		$scope.issues = false;
+		$scope.issuesOne = false;
+		$scope.issuesOneToSeven = false;
+		$scope.issuesSeven = true;	
 	}
 })
