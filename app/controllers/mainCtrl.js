@@ -14,11 +14,25 @@ gitIssuesChart.controller('mainCtrl', function ($scope, $rootScope, gitRestangul
     $scope.backdrop = true;
     $scope.promise = null;
 
+    $scope.page = 1;
+    $scope.next = function(){
+    	$scope.page++;
+    }
+
+    $scope.back = function(){
+    	$scope.page--;
+    }
+
+    $scope.$watch('page', function (oldValue, newValue) {
+    	if($scope.locationUrl)
+			$scope.getData();
+	})
+	    
 	$scope.getData =  function(){
 		console.log($scope.locationUrl)
 		$scope.disableContainer = true;
 		$scope.url = urlParser.parse($scope.locationUrl)
-		$scope.promise = gitIssuesFactory.get($scope.url.owner, $scope.url.repo).then(function (res) {
+		$scope.promise = gitIssuesFactory.get($scope.url.owner, $scope.url.repo, $scope.page).then(function (res) {
             
             $rootScope.gitIssuesData = []
             for(var i=0;i<res.length;i++){

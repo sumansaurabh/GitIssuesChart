@@ -1,4 +1,4 @@
-gitIssuesChart.directive('gitIssues', function($rootScope, $compile){
+gitIssuesChart.directive('gitIssues', function($rootScope){
 	return {
 	    restrict: 'E',
 	    templateUrl: '/views/issues.html',

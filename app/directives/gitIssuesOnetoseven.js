@@ -10,12 +10,14 @@ gitIssuesChart.directive('gitIssuesOnetoseven', function($rootScope){
 	    			if((currentDate.getTime()-d.getTime())<7*86400000)
 	    				return true;
 	    	}
-	    	scope.gitIssues = []
-	    	for(var i=0;i<$rootScope.gitIssuesData.length;i++){
-	    		if(validateDate($rootScope.gitIssuesData[i].created_at)){
-	    			scope.gitIssues.push($rootScope.gitIssuesData[i])
-	    		}
-	    	}
+	    	$rootScope.$watch('gitIssuesData', function (oldValue, newValue) {
+		    	scope.gitIssues = []
+		    	for(var i=0;i<$rootScope.gitIssuesData.length;i++){
+		    		if(validateDate($rootScope.gitIssuesData[i].created_at)){
+		    			scope.gitIssues.push($rootScope.gitIssuesData[i])
+		    		}
+		    	}
+	    	})
 	    }
 
 	}
