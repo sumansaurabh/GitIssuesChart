@@ -1,9 +1,21 @@
-gitIssuesChart.directive('gitIssuesOnetoseven', function(){
+gitIssuesChart.directive('gitIssuesOnetoseven', function($rootScope){
 	return {
 	    restrict: 'E',
-	    templateUrl: '/views/issuesOneToSeven.html',
+	    templateUrl: '/views/issues.html',
 	    link: function (scope, element, attrs) {
-	    	console.log("saurabh")
+	    	var validateDate = function(date){
+	    		var d = new Date(date);
+	    		var currentDate =  new Date();
+	    		if((currentDate.getTime()-d.getTime())>86400000)
+	    			if((currentDate.getTime()-d.getTime())<7*86400000)
+	    				return true;
+	    	}
+	    	scope.gitIssues = []
+	    	for(var i=0;i<$rootScope.gitIssuesData.length;i++){
+	    		if(validateDate($rootScope.gitIssuesData[i].created_at)){
+	    			scope.gitIssues.push($rootScope.gitIssuesData[i])
+	    		}
+	    	}
 	    }
 
 	}
